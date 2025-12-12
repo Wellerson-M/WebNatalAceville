@@ -85,13 +85,22 @@
             background-image: url('caminhao.png');
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 100%;
-            opacity: 0.45;
+            background-size: 65%;
+            opacity: 0.28;
             pointer-events: none;
             z-index: 1;
             filter: none;
         }
 
+        /* Melhor visibilidade em telas médias (tablets/notebooks) */
+        @media (min-width: 769px) and (max-width: 1200px) {
+            body::before {
+                background-size: 75%;
+                opacity: 0.32;
+            }
+        }
+
+        /* Mobile: mais visível */
         @media (max-width: 768px) {
             body::before {
                 background-size: 110%;
