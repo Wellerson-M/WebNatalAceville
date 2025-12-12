@@ -183,9 +183,10 @@
         }
     </style>
 
-    <audio autoplay loop>
+    <audio id="musica" autoplay loop muted>
         <source src="musicaNatal.m4a" type="audio/mp4">
     </audio>
+
 
 </head>
 
@@ -299,6 +300,15 @@
             seedSnow(30);
         });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("musica");
+    setTimeout(() => {
+        audio.muted = false;
+    }, 1000);
+});
+</script>
+
 
 </body>
 
