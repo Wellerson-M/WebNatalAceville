@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedição de Natal - Aceville</title>
+    <style>
+        /* --- Importando Fonte Elegante --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --red-premium: #b30000;
+            --green-xmas: #165B33;
+            --gold: #D4AF37;
+            --text: #333;
+            --bg-card: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top, #d32f2f, var(--red-premium));
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Neve Caindo (Background) --- */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2em;
+            animation: fall linear infinite;
+            z-index: 60;
+            user-select: none;
+            pointer-events: none;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        /* --- O Container Principal --- */
+        .container {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+            padding: 0 0 30px 0;
+            /* Padding zerado no topo p/ imagem colar */
+            position: relative;
+            z-index: 20;
+            text-align: center;
+            overflow: visible;
+            /* permitir que o caminhão apareça parcialmente */
+            border-bottom: 6px solid var(--green-xmas);
+        }
+
+        /* --- Imagem de Topo (natal.avif) --- */
+        .hero-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* --- Caminhão de Fundo (Marca d'água) --- */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('caminhao.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+            opacity: 0.45;
+            pointer-events: none;
+            z-index: 1;
+            filter: none;
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                background-size: 110%;
+                opacity: 0.5;
+            }
+        }
+
+        .truck-bg {
+            display: none;
+            /* manter compatibilidade caso exista elemento; usaremos o pseudo-fundo */
+        }
+
+        /* --- Conteúdo de Texto --- */
+        .content {
+            padding: 25px 25px 10px 25px;
+            position: relative;
+            z-index: 1;
+            /* Fica acima do caminhão */
+        }
+
+        h1 {
+            color: var(--red-premium);
+            font-size: 1.6rem;
+            margin: 10px 0 0 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* --- Blocos de Informação --- */
+        .info-block {
+            background: rgba(248, 249, 250, 0.9);
+            /* Fundo levemente transparente */
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+            border-left: 4px solid var(--green-xmas);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-block h3 {
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            color: var(--green-xmas);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-block p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* --- Animação de Confete (CSS + JS) --- */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffd300;
+            top: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- snow will be generated dynamically for higher intensity -->
+
+    <div class="container">
+
+        <img src="natal.avif" alt="Decoração de Natal" class="hero-img">
+
+        <div class="content">
+            <h1>Expedição de Natal</h1>
+            <span class="subtitle">Expedição • Aceville</span>
+
+            <p>A gente trabalha todo dia garantindo que tudo saia na hora certa. Para o Natal, decidimos "despachar"
+                algo
+                diferente: uma ideia criativa usando um pouco do material que a gente vê todo dia.</p>
+
+            <div class="info-block" style="border-left-color: var(--red-premium);">
+                <h3>🎅 Nossa Equipe</h3>
+                <p>Cada detalhe foi feito à mão pela nossa equipe. Os duendes na porta representam cada um de nós,
+                    trabalhando juntos para trazer luz e inovação para a empresa.</p>
+            </div>
+
+            <div class="info-block">
+                <h3>⚡ Tecnologia</h3>
+                <p>Usamos um <strong>Arduino</strong> (sistema inteligente) que programamos aqui mesmo. Ele escuta o
+                    ambiente e, ao detectar <strong>duas palmas</strong>, acende as luzes automaticamente. Sem botões,
+                    pura lógica.</p>
+            </div>
+
+            <div class="info-block" style="border-left-color: var(--gold);">
+                <h3>♻️ Recursos</h3>
+                <p>Focamos no 'faça você mesmo' o caminhão é papelão, as impressões usam verso de rascunho e
+                    resgatamos decorações antigas. Mesclamos com componentes novos apenas onde necessário, focando no
+                    desperdício zero.</p>
+            </div>
+
+            <p style="font-size: 0.8rem; color: #888; margin-top: 25px;">
+                Obrigado pela visita!<br>
+                <strong>Boas Festas!!🎅🎄🎁</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.body;
+            const items = ['🎁', '✨', '🎄', '🍬', '🎅', '⭐'];
+
+            // Criar 30 elementos explodindo
+            for (let i = 0; i < 30; i++) {
+                const el = document.createElement('div');
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                el.style.position = 'fixed';
+                el.style.left = '50%';
+                el.style.top = '50%';
+                el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                el.style.pointerEvents = 'none';
+                el.style.zIndex = '9999';
+                el.style.transition = 'all 1.5s ease-out';
+                el.style.opacity = '1';
+
+                container.appendChild(el);
+
+                // Calcular direção aleatória
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 300 + 100;
+                const x = Math.cos(angle) * velocity;
+                const y = Math.sin(angle) * velocity;
+
+                // Animar
+                setTimeout(() => {
+                    el.style.transform = `translate(${x}px, ${y}px) rotate(${Math.random() * 360}deg)`;
+                    el.style.opacity = '0';
+                }, 50);
+
+                // Remover depois
+                setTimeout(() => {
+                    el.remove();
+                }, 1600);
+            }
+
+            // --- Gerar neve dinamicamente para maior intensidade ---
+            function seedSnow(count = 40) {
+                for (let i = 0; i < count; i++) {
+                    const s = document.createElement('div');
+                    s.className = 'snowflake';
+                    const ch = Math.random() > 0.5 ? '❄' : '❅';
+                    s.innerText = ch;
+                    const left = Math.random() * 100;
+                    s.style.left = left + '%';
+                    s.style.fontSize = (Math.random() * 18 + 8) + 'px';
+                    s.style.opacity = (Math.random() * 0.6 + 0.4).toFixed(2);
+                    const dur = Math.random() * 8 + 4;
+                    s.style.animationDuration = dur + 's';
+                    s.style.animationDelay = (Math.random() * 4) + 's';
+                    document.body.appendChild(s);
+
+                    // remover quando sair da tela e regenerar
+                    const timeToFall = (dur + 4) * 1000;
+                    setTimeout(() => {
+                        if (s.parentElement) s.remove();
+                        seedSnow(1); // regenerar um novo floco
+                    }, timeToFall);
+                }
+            }
+
+            // seed inicial
+            seedSnow(30);
+        });
+    </script>
+
+</body>
+
+</html>
